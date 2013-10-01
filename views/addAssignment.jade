@@ -1,0 +1,47 @@
+extends layout
+
+include includes/navbar
+
+block content
+	mixin navbar(2)
+	
+	.container
+		.panel.panel-default
+			.panel-heading Add an assignment
+			.panel-body
+				form.form-horizontal(method="POST", action="/add", enctype="multipart/form-data")
+					input(type="hidden", name="_csrf", value=token)
+					.form-group
+						label.col-lg-2.col-md-2.col-sm-2.control-label(for="name") Name
+						.col-lg-10.col-md-10.col-sm-10
+							input.form-control#name(type="text", name="name", placeholder="Assignment Name")
+					.form-group
+						label.col-lg-2.col-md-2.col-sm-2.control-label(for="due") Due date
+						.col-lg-10.col-md-10.col-sm-10
+							input.form-control#due(type="date", name="due")
+					.form-group
+						label.col-lg-2.col-md-2.col-sm-2.control-label(for="instructor") Instructor
+						.col-lg-10.col-md-10.col-sm-10
+							select.form-control(name="instructor")
+								option(value="nobody") -- Nobody --
+								option(value="Dan Fee") Dan Fee
+								option(value="Gerard Larkin") Gerard Larkin
+								option(value="Karen Dyke") Karen Dyke
+					.form-group
+						label.col-lg-2.col-md-2.col-sm-2.control-label(for="file") File
+						.col-lg-10.col-md-10.col-sm-10
+							input.form-control#file(type="file", name="file", placeholder="Assignment File")
+			
+					.form-group
+						label.col-lg-2.col-md-2.col-sm-2.control-label Criteria
+						.col-lg-10.col-md-10.col-sm-10
+							input.form-control(type="text", name="criteria", placeholder="Criteria name (e.g. Distinction 1)")
+					.form-group
+						.col-lg-2.col-md-2.col-sm-2
+							a.btn.btn-primary.pull-right +
+						.col-lg-10.col-md-10.col-sm-10
+							input.form-control(type="text", name="criteria", placeholder="Criteria name (e.g. Distinction 2)")
+			
+					.form-group
+						.col-lg-10.col-md-10.col-sm-10.col-lg-offset-2.col-md-offset-2.col-sm-offset-2
+							input.btn.btn-success(type="submit", value="Submit")

@@ -1,0 +1,23 @@
+extends layout
+
+include includes/navbar
+
+block content
+	mixin navbar(1)
+	
+	.container
+		.panel.panel-default
+			.panel-heading= assignment.name
+				|  by #{assignment.instructor}
+			.panel-body
+				p.lead My notes on the assignment
+			table.table
+				tbody
+					for criteria in assignment.criteria
+						tr
+							td.col-md-6.col-xs-6.col-lg-6.col-sm-6(class=criteria.accomplished == true ? "success" : "danger")= criteria.name
+							td.col-md-6.col-xs-6.col-lg-6.col-sm-6
+								label.checkbox-inline
+									input(type="checkbox", checked= criteria.accomplished == true ? "checked": null)
+									| Criteria complete
+								a.pull-right.btn.btn-success.btn-xs(href="/assignment/"+assignment._id+"/files/"+criteria._id) View Files

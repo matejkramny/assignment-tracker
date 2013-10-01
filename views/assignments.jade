@@ -1,0 +1,29 @@
+extends layout
+
+include includes/navbar
+
+block content
+	mixin navbar(1)
+	
+	.container
+		.panel.panel-default
+			.panel-heading Assignments
+				.pull-right
+					| Sort: 
+					select
+						option(value="") All instructors
+						option(value="") Dan Fee
+						option(value="") Gerard Larkin
+						option(value="") Karen Dyke
+					select
+						option(value="") Ending soonest
+						option(value="") Name
+						option Date Created
+			.panel-body
+				p.lead List of assignments here
+			table.table.table-hover
+				tbody
+					for assignment in assignments
+						tr
+							td
+								a(href="/assignment/"+assignment._id)= assignment.name

@@ -1,0 +1,11 @@
+extends layout
+
+include includes/navbar
+
+block content
+	mixin navbar(0)
+	.jumbotron
+		.container
+			h1 Welcome
+			p Store your assignments and deadlines here.
+			a.btn.btn-primary(href="/add") Start now

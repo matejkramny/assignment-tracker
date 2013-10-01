@@ -1,0 +1,51 @@
+extends layout
+
+include includes/navbar
+
+block content
+	mixin navbar(2)
+	
+	.container
+		.row
+			.col-xs-6.col-md-6.col-xs-6.col-lg-6
+				.panel.panel-default
+					.panel-heading Login
+					.panel-body
+						form.form-horizontal(action="/auth", method="POST")
+							input(type="hidden", name="_csrf", value=token)
+							input(type="hidden", name="auth", value="login")
+							.form-group
+								label.col-md-3.col-xs-3.col-lg-3.col-sm-3.control-label(for="email") Email
+								.col-lg-9.col-md-9.col-xs-9.col-sm-9
+									input.form-control(type="email", name="email", placeholder="Login Email Address")
+							.form-group
+								label.col-md-3.col-xs-3.col-lg-3.col-sm-3.control-label(for="password") Password
+								.col-lg-9.col-md-9.col-xs-9.col-sm-9
+									input.form-control(type="password", name="password", placeholder="Login Password")
+							.form-group
+								.col-lg-9.col-md-9.col-xs-9.col-sm-9.col-lg-offset-3.col-md-offset-3.col-xs-offset-3.col-sm-offset-3
+									input.btn.btn-primary(type="submit", value="Log in")
+									a.btn.btn-link Reset my password
+			.col-xs-6.col-md-6.col-xs-6.col-lg-6
+				.panel.panel-default
+					.panel-heading Register
+					.panel-body
+						form.form-horizontal(action="/auth", method="POST")
+							input(type="hidden", name="_csrf", value=token)
+							input(type="hidden", name="auth", value="register")
+							.form-group
+								label.col-md-3.col-xs-3.col-lg-3.col-sm-3.control-label(for="regEmail") Email
+								.col-lg-9.col-md-9.col-xs-9.col-sm-9
+									input.form-control(type="email", name="email", placeholder="Your Email Address")
+							.form-group
+								label.col-md-3.col-xs-3.col-lg-3.col-sm-3.control-label(for="regName") Name
+								.col-lg-9.col-md-9.col-xs-9.col-sm-9
+									input.form-control(type="text", name="name", placeholder="Name Surname")
+							.form-group
+								label.col-md-3.col-xs-3.col-lg-3.col-sm-3.control-label(for="password") Password
+								.col-lg-9.col-md-9.col-xs-9.col-sm-9
+									input.form-control(type="password", name="password", placeholder="Password")
+							.form-group
+								.col-lg-9.col-md-9.col-xs-9.col-sm-9.col-lg-offset-3.col-md-offset-3.col-xs-offset-3.col-sm-offset-3
+									input.btn.btn-primary(type="submit", value="Sign me up!")
+						
