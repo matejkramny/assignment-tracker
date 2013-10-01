@@ -31,8 +31,8 @@ function getAssignment (req, res, next) {
 
 exports.router = function(app) {
 	app.get('/', index)
-	.get('/add', addAssignment)
-	.post('/add', submitAssignment)
+	.get('/add', authd, addAssignment)
+	.post('/add', authd, submitAssignment)
 	.get('/assignments', authd, assignments)
 	.get('/assignment/:id', authd, getAssignment, viewAssignment)
 	
